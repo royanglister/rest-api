@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: app-api
+    command: uvicorn main:app --host 127.0.0.1 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: postgres
+    container_name: postgresql_db
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=users_db
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    restart: always
+    hostname: postgres
+
+volumes:
+  postgres:
