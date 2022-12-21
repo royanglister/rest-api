@@ -8,8 +8,8 @@ from sqlalchemy.orm import sessionmaker
 
 USERNAME = "postgres"
 PASSWORD = "postgres"
-DB_NAME = "users_db"
-LOCAL_HOST = "127.0.0.1"
+DB_NAME = "postgres"
+LOCAL_HOST = "localhost"
 PORT = "5432"
 DB_URI = f"postgresql://{USERNAME}:{PASSWORD}@localhost/{DB_NAME}"
 
